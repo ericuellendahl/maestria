@@ -1,35 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import CarDetails from "./components/CarDetails";
+import ConditionalRender from "./components/ConditionalRender";
+import Container from "./components/Container";
+import ExecuteFunction from "./components/ExecuteFunction";
+import Fragment from "./components/Fragment";
+import ListRender from "./components/ListRender";
+import ManageData from "./components/ManageData";
+import ShowUsername from "./components/ShowUsername";
+import Message from "./components/Message";
+import ChangeMessageState from "./components/ChangeMessageState";
+import UserDetails from "./components/UserDetails";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const name = "Eric";
+  const cars = [
+    { id: 1, brand: "VW", km: 1000, color: "Azul", newCar: false },
+    { id: 2, brand: "Fiat", km: 0, color: "Branco", newCar: true },
+    { id: 3, brand: "Ford", km: 100, color: "Vermelho", newCar: false },
+  ];
+
+  function showMessage(){
+    console.log("Evento do componente p")
+  }
+
+  const [message, setMessage]= useState("");
+
+  const handleMessage= (msg)=>{
+    setMessage(msg);
+  }
+
+  const [user] = useState([
+    { id: 1, name: "Eric", age: 18, profession:"ADS"    },
+    { id: 2, name: "Jão", age: 14, profession:"ADS1"    },
+    { id: 3, name: "Ricado", age: 11, profession:"ADS2"    },
+    { id: 4, name: "Enrique", age: 35, profession:"ADS3"    },
+]); 
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        {/* <h1>Avançando em React</h1>
+        <div>
+          <img src="/Aula3.png" alt="Paissagem" />
+        </div> 
+        <div>
+          <img src={ImgGoogle} alt="Image do google" />
+        </div> */}
+        <ManageData></ManageData>
+        <ListRender></ListRender>
+        <ConditionalRender></ConditionalRender>
+        <ShowUsername name={name}></ShowUsername>
+        {/* <CarDetails brand="VW" km={1000} color="Azul" newCar={false}></CarDetails>
+        <CarDetails brand="Fiat" km={0} color="Branco" newCar={true}></CarDetails>
+        <CarDetails
+          brand="Ford"
+          km={100}
+          color="Vermelho"
+          newCar={false}
+        ></CarDetails> */}
+
+        {cars.map((car) => (
+          <CarDetails
+            key={car.id}
+            brand={car.brand}
+            km={car.km}
+            color={car.color}
+            newCar={car.newCar}
+          ></CarDetails>
+        ))}
+        <Fragment propsFragment="teste"></Fragment>
+        <Container myValue="Testing">
+          <p>Este é o conteúdo do container</p>
+        </Container>
+        <ExecuteFunction myFunction={showMessage}></ExecuteFunction>
+        <Message msg={message}></Message>
+        <ChangeMessageState handleMessage={handleMessage}></ChangeMessageState>
+        <UserDetails user={user}></UserDetails>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
