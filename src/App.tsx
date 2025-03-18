@@ -1,10 +1,44 @@
+import { useState } from "react";
 import "./App.css";
+import MyComponent from "./components/4_css_react/MyComponent";
+import Title from "./components/4_css_react/Title";
 
 function App() {
+  const n = 15;
+  const [name] = useState("Eric");
+  const redTitle = true;
+
   return (
     <>
       <div className="App">
         <h1>React com CSS</h1>
+        <MyComponent></MyComponent>
+        <p>Esse parágrafo é do App.tsx</p>
+        <p
+          style={{ color: "blue", padding: "25px", borderTop: "2px solid red" }}
+        >
+          Este elemento foi estilizado de forma inline
+        </p>
+
+        <h2 style={n < 10 ? { color: "purple" } : { color: "green" }}>
+          CSS dinâmico
+        </h2>
+        <h2 style={n > 10 ? { color: "purple" } : { color: "green" }}>
+          CSS dinâmico
+        </h2>
+        <h2
+          style={
+            name === "Eric" ? { color: "green", backgroundColor: "#000" } : null
+          }
+        >
+          CSS dinâmico
+        </h2>
+
+        <h2 className={redTitle ? "red-title" : "title"}>
+          Este título vai ter classe dinâmica
+        </h2>
+
+        <Title></Title>
       </div>
     </>
   );
