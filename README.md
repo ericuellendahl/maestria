@@ -48,3 +48,16 @@ export default tseslint.config({
   },
 })
 ```
+
+
+## Configuration NPM Server Json
+
+``` Executar o NPM
+Primeiro iniciar o serviço 
+ - npm rum dev
+
+Segundo o Server Json
+
+- json-server --watch ./src/components/7_requesicao_http/data/db.json --port 3002
+
+```
