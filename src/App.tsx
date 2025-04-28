@@ -1,11 +1,11 @@
 import "./App.css";
-import Requisicao from "./components/7_requesicao_http/requisicao";
+import RouterDom from "./components/8_router/Routerdom";
 
 function App() {
   return (
     <>
       <div className="App">
-        <Requisicao></Requisicao>
+        <RouterDom></RouterDom>
       </div>
     </>
   );

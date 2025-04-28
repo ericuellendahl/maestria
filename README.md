@@ -61,3 +61,14 @@ Segundo o Server Json
 - json-server --watch ./src/components/7_requesicao_http/data/db.json --port 3002
 
 ```
+
+```
+npm install json-server@0.17.0
+A versão atual está apresentando falhas, mas com a versão 0.17.0, poderão seguir com o curso sem problemas.
+Para aqueles que  já instalaram o pacote na versão mais recente, executem esse comando:
+npm uninstall json-server
+Em seguida, excluam a pasta node_modules, e executem o comando:
+
+
+```
+
